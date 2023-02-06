@@ -6,7 +6,7 @@
 namespace: ramblurr
 
 # The name of the collection. Has the same character restrictions as 'namespace'
-name: freenas
+name: truenas
 
 # The version of the collection. Must be compatible with semantic versioning
 version: 0.0.1
@@ -22,7 +22,7 @@ authors:
 
 ### OPTIONAL but strongly recommended
 # A short summary description of the collection
-description: manage freenas via the api
+description: manage truenas via the api
 
 # Either a single license or a list of licenses for content inside of a collection. Ansible Galaxy currently only
 # accepts L(SPDX,https://spdx.org/licenses/) licenses. This key is mutually exclusive with 'license_file'
@@ -31,7 +31,7 @@ license:
 
 # A list of tags you want to associate with the collection for indexing/searching. A tag name has the same character
 # requirements as 'namespace' and 'name'
-tags: [freenas]
+tags: [truenas]
 
 # Collections that this collection requires to be installed for it to be usable. The key of the dict is the
 # collection label 'namespace.name'. The value is a version range
@@ -40,16 +40,16 @@ tags: [freenas]
 dependencies: {}
 
 # The URL of the originating SCM repository
-repository: https://github.com/Ramblurr/ramblurr.freenas
+repository: https://github.com/Ramblurr/ramblurr.truenas
 
 # The URL to any online docs
-documentation: https://github.com/Ramblurr/ramblurr.freenas
+documentation: https://github.com/Ramblurr/ramblurr.truenas
 
 # The URL to the homepage of the collection/project
-homepage: https://github.com/Ramblurr/ramblurr.freenas
+homepage: https://github.com/Ramblurr/ramblurr.truenas
 
 # The URL to the collection issue tracker
-issues: https://github.com/Ramblurr/ramblurr.freenas/issues
+issues: https://github.com/Ramblurr/ramblurr.truenas/issues
 
 # A list of file glob-like patterns used to filter any files or directories that should not be included in the build
 # artifact. A pattern is matched from the relative path of the file or directory of the collection directory. This

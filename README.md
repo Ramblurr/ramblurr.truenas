@@ -1,12 +1,12 @@
-# FreeNAS Collection for Ansible
+# truenas Collection for Ansible
 
-This collection maintains FreeNAS related modules maintained by Casey Link (ramblurr).
+This collection maintains truenas related modules maintained by Casey Link (ramblurr).
 
 ## Usage
 
 Install this collection locally:
 
-    ansible-galaxy collection install geerlingguy.k8s -p ./collections
+    ansible-galaxy collection install ramblurr.truenas -p ./collections
 
 Then you can use the roles from the collection in your playbooks:
 
@@ -15,11 +15,11 @@ Then you can use the roles from the collection in your playbooks:
 - hosts: all
 
 collections:
-- ramblurr.freenas
+- ramblurr.truenas
 
 tasks:
 - name: set tunable
-  freenas_tunable: 
+  truenas_tunable: 
     url: http://example.com
     password: example
     name: wireguard_interfaces

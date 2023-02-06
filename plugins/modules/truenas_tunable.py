@@ -12,11 +12,11 @@ import traceback
 
 DOCUMENTATION = r"""
 ---
-module: freenas_tunable
+module: truenas_tunable
 author: "Casey Link <unnamedrambler@gmail.com>"
-short_description: Manage FreeNAS system tunables
+short_description: Manage TrueNAS system tunables
 description:
-  - Manage FreeNAS system tunables
+  - Manage TrueNAS system tunables
 options:
   state:
     description:
@@ -26,17 +26,17 @@ options:
     type: str
   url:
     description:
-      - The url of the FreeNAS instance
+      - The url of the TrueNAS instance
     type: str
     required: true
   user:
     description:
-      - The user to auth as to the FreeNAS instance
+      - The user to auth as to the TrueNAS instance
     type: str
     default: root
   password:
     description:
-      - The password to auth as to the FreeNAS instance
+      - The password to auth as to the TrueNAS instance
     type: str
     required: true
   name:
@@ -67,7 +67,7 @@ requirements:
 """
 EXAMPLES = r"""
 - name: add wireguard interface
-  freenas_tunable:
+  truenas_tunable:
     url: https://example.com
     password: example
     state: present
@@ -77,7 +77,7 @@ EXAMPLES = r"""
     comment: The primary wireguard interface
 
 - name: remove wireguard interface
-  freenas_tunable:
+  truenas_tunable:
     url: https://example.com
     password: example
     state: present
@@ -96,7 +96,7 @@ def without(d, key):
 API_ENDPOINT = "%(hostname)s/api/v2.0"
 
 
-class FreenasApi(object):
+class TruenasApi(object):
     def __init__(self, hostname, username, password):
         self.auth_tuple = (username, password)
         self.api_endpoint = API_ENDPOINT % {"hostname": hostname}
@@ -198,14 +198,14 @@ def run_module():
     )
 
     try:
-        client = FreenasApi(
+        client = TruenasApi(
             module.params["url"], module.params["user"], module.params["password"]
         )
         tunables = client.get("/tunable")
     except Exception as e:
         print(e)
         module.fail_json(
-            msg="Error fetching freenas tunables: %s" % to_native(e),
+            msg="Error fetching truenas tunables: %s" % to_native(e),
             exception=traceback.format_exc(),
         )
         return
@@ -239,7 +239,7 @@ def run_module():
     except Exception as e:
         print(e)
         module.fail_json(
-            msg="Error setting freenas tunable %s %s: %s"
+            msg="Error setting truenas tunable %s %s: %s"
             % (module.params["type"], module.params["name"], to_native(e)),
             exception=traceback.format_exc(),
         )
