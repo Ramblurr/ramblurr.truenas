@@ -1,0 +1,39 @@
+- name: test my new module
+  connection: local
+  hosts: localhost
+  vars:
+    truenas_url: "{{ lookup('ansible.builtin.env', 'TRUENAS_URL') }}"
+    truenas_password: "{{ lookup('ansible.builtin.env', 'TRUENAS_PASSWORD') }}"
+  tasks:
+    - name: run the new module
+      truenas_cron:
+        url: " {{ truenas_url }}"
+        password: "{{ truenas_password }}"
+        state: present
+        description: run a script
+        command: /root/some-script
+        hide_stdout: true
+        hide_stderr: true
+        schedule:
+          minute: 0
+          hour: 1
+          dom: "2"
+          month: "3"
+          dow: "4"
+        user: root
+      register: testout
+
+    - name: dump test output
+      debug:
+        msg: '{{ testout }}'
+
+    - name: run the new module
+      truenas_cron:
+        url: " {{ truenas_url }}"
+        password: "{{ truenas_password }}"
+        state: absent
+        description: run a script
+      register: testout
+    - name: dump test output
+      debug:
+        msg: '{{ testout }}'
